@@ -12,7 +12,7 @@ Chương trình này thực hiện phân tích và lập chỉ mục từ khóa 
 
 ## Yêu Cầu
 
-- Trình biên dịch C (GCC hoặc MSVC)
+- Trình biên dịch C (GCC)
 - File `stopw.txt` chứa danh sách các từ dừng (một từ mỗi dòng)
 - File văn bản đầu vào để phân tích
 
@@ -53,7 +53,7 @@ main.exe <tên_file_văn_bản>
 #### Trên Linux/Mac:
 
 ```bash
-gcc -o main main.c
+gcc main.c -o main
 ./main <tên_file_văn_bản>
 ```
 
