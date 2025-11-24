@@ -47,6 +47,12 @@ void skipComment() {
   }
 }
 
+void skipLineComment() {
+  while (currentChar != EOF && currentChar != '\n') {
+    readChar();
+  }
+}
+
 Token* readIdentKeyword(void) {
   Token *token = makeToken(TK_NONE, lineNo, colNo);
   int count = 1;
@@ -123,6 +129,30 @@ Token* readConstChar(void) {
   }
 }
 
+Token* readString(void) {
+  Token *token = makeToken(TK_STRING, lineNo, colNo);
+  int count = 0;
+
+  readChar(); // Bỏ qua dấu " mở đầu
+  while (currentChar != EOF && charCodes[currentChar] != CHAR_DOUBLEQUOTE) {
+    if (count <= MAX_IDENT_LEN) {
+       token->string[count] = (char)currentChar;
+       count++;
+    }
+    readChar();
+  }
+  
+  token->string[count] = '\0';
+
+  if (currentChar == EOF) {
+    token->tokenType = TK_NONE;
+    error(ERR_INVALIDCHARCONSTANT, lineNo, colNo);
+    return token;
+  }
+  
+  readChar(); // Bỏ qua dấu " đóng
+  return token;
+}
 
 Token* getToken(void) {
   Token *token;
@@ -149,15 +179,35 @@ Token* getToken(void) {
 
   // Dấu nhân *
   case CHAR_TIMES:
-    token = makeToken(SB_TIMES, lineNo, colNo);
-    readChar(); 
-    return token;
+    ln = lineNo; cn = colNo;
+    readChar();
+    if (charCodes[currentChar] == CHAR_TIMES) { // Nếu gặp thêm dấu * nữa
+      readChar();
+      return makeToken(SB_POWER, ln, cn); // Trả về token lũy thừa
+    } else {
+      return makeToken(SB_TIMES, ln, cn); // Trả về phép nhân bình thường
+    }
 
   // Dấu chia /
   case CHAR_SLASH:
-    token = makeToken(SB_SLASH, lineNo, colNo);
-    readChar(); 
+    ln = lineNo; cn = colNo;
+    readChar();
+    if (charCodes[currentChar] == CHAR_SLASH) { // Nếu gặp thêm dấu / nữa
+      skipLineComment(); // Bỏ qua đến hết dòng
+      return getToken(); // Gọi đệ quy lấy token tiếp theo
+    } else {
+      return makeToken(SB_SLASH, ln, cn); // Phép chia bình thường
+    }
+  
+  // phép lấy dư
+    case CHAR_PERCENT:
+    token = makeToken(SB_MOD, lineNo, colNo);
+    readChar();
     return token;
+
+  // string
+    case CHAR_DOUBLEQUOTE:
+    return readString();
   
   // Dấu nhỏ hơn < và nhỏ hơn hoặc bằng <=
   case CHAR_LT:
@@ -283,6 +333,7 @@ void printToken(Token *token) {
   case TK_NUMBER: printf("TK_NUMBER(%d)\n", token->value); break;
   case TK_CHAR: printf("TK_CHAR(\'%s\')\n", token->string); break;
   case TK_EOF: printf("TK_EOF\n"); break;
+  case TK_STRING: printf("TK_STRING(\"%s\")\n", token->string); break;
 
   case KW_PROGRAM: printf("KW_PROGRAM\n"); break;
   case KW_CONST: printf("KW_CONST\n"); break;
@@ -304,6 +355,10 @@ void printToken(Token *token) {
   case KW_DO: printf("KW_DO\n"); break;
   case KW_FOR: printf("KW_FOR\n"); break;
   case KW_TO: printf("KW_TO\n"); break;
+  case KW_STRING: printf("KW_STRING\n"); break;
+  case KW_BYTES: printf("KW_BYTES\n"); break;
+  case KW_REPEAT: printf("KW_REPEAT\n"); break;
+  case KW_UNTIL: printf("KW_UNTIL\n"); break;
 
   case SB_SEMICOLON: printf("SB_SEMICOLON\n"); break;
   case SB_COLON: printf("SB_COLON\n"); break;
@@ -324,6 +379,8 @@ void printToken(Token *token) {
   case SB_RPAR: printf("SB_RPAR\n"); break;
   case SB_LSEL: printf("SB_LSEL\n"); break;
   case SB_RSEL: printf("SB_RSEL\n"); break;
+  case SB_MOD: printf("SB_MOD\n"); break;
+  case SB_POWER: printf("SB_POWER\n"); break;
   }
 }
 

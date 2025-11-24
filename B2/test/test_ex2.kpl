@@ -1,0 +1,10 @@
+VAR s : STRING;
+    b : BYTES;
+BEGIN
+    s := "Hello World"; // Comment kieu C++
+    x := 2 ** 10;
+    y := 10 % 3;
+    REPEAT
+       x := x + 1;
+    UNTIL x > 10;
+END.
