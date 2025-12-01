@@ -1,0 +1,29 @@
+PROGRAM TestRepeat; 
+(* Chuong trinh test Repeat..Until va Gan da bien *)
+
+VAR x : INTEGER;
+    y : INTEGER;
+    z : INTEGER;
+    sum : INTEGER;
+
+BEGIN
+  (* Test 1: Gan da bien khoi tao *)
+  x, y, z := 1, 2, 3;
+
+  (* Test 2: Vong lap Repeat *)
+  REPEAT
+    BEGIN
+      (* Test 3: Gan da bien voi bieu thuc phuc tap hon *)
+      x, y := x + 1, y * 2;
+      
+      z := x + y;
+      
+      (* Gia su co ham WriteI de in ket qua (neu scanner/parser ho tro) *)
+      CALL WriteI(z);
+    END
+  UNTIL z > 20;
+
+  (* Test 4: Gan da bien lan cuoi *)
+  sum, x := z + 100, 0;
+
+END.

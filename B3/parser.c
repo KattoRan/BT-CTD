@@ -333,10 +333,14 @@ void compileStatement(void) {
   case KW_FOR:
     compileForSt();
     break;
+  case KW_REPEAT:
+    compileRepeatSt();
+    break;
     // EmptySt needs to check FOLLOW tokens
   case SB_SEMICOLON:
   case KW_END:
   case KW_ELSE:
+  case KW_UNTIL: 
     break;
     // Error occurs
   default:
@@ -350,8 +354,18 @@ void compileAssignSt(void) {
   // TODO
   eat(TK_IDENT);
   compileIndexes();
+  while (lookAhead->tokenType == SB_COMMA) {
+    eat(SB_COMMA);
+    eat(TK_IDENT);
+    compileIndexes();
+  }
+
   eat(SB_ASSIGN);
   compileExpression();
+  while (lookAhead->tokenType == SB_COMMA) {
+    eat(SB_COMMA);
+    compileExpression();
+  }
   assert("Assign statement parsed ....");
 }
 
@@ -411,6 +425,15 @@ void compileForSt(void) {
   eat(KW_DO);
   compileStatement();
   assert("For statement parsed ....");
+}
+
+void compileRepeatSt(void) {
+  assert("Parsing a repeat statement ....");
+  eat(KW_REPEAT);
+  compileStatements();
+  eat(KW_UNTIL);
+  compileCondition();
+  assert("Repeat statement parsed ....");
 }
 
 void compileArguments(void) {
