@@ -49,6 +49,8 @@ B2/
 
 - `B1` chứa bài tập tuần 1 (xử lý file text)
 - `B2` chứa bài tập tuần 2 (lexical scanner/tokenizer) — xem `B2/README.md` để hiểu chi tiết
+- `B3` chứa bài tập tuần 3 (parser) — xem `B3/README.md` để hiểu chi tiết
+- `B4` chứa bài tập tuần 4 (bảng ký hiệu / symbol table) — xem `B4/README.md` để hiểu chi tiết
 
 ## Cách biên dịch và chạy (Windows PowerShell)
 
