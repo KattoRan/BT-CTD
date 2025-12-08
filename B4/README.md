@@ -47,6 +47,26 @@ gcc symtab.o debug.o main.o -o symtab.exe
 .\symtab.exe
 ```
 
+## Kết quả
+```Program PRG
+    Const c1 = 10
+    Const c2 = 'a'
+    Type t1 = Arr(10,Int)
+    Var v1 : Int
+    Var v2 : Arr(10,Arr(10,Int))
+    Function f : Int
+        Param p1 : Int
+        Param VAR p2 : Char
+
+    Procedure p
+        Param v1 : Int
+        Const c1 = 'a'
+        Const c3 = 10
+        Type t1 = Int
+        Type t2 = Arr(10,Int)
+        Var v2 : Arr(10,Int)
+        Var v3 : Char
+```
 ## Công việc thường làm
 
 - Kiểm tra hàm thêm symbol: ghi tên, kiểu, vị trí.
