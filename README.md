@@ -51,6 +51,7 @@ B2/
 - `B2` chứa bài tập tuần 2 (lexical scanner/tokenizer) — xem `B2/README.md` để hiểu chi tiết
 - `B3` chứa bài tập tuần 3 (parser) — xem `B3/README.md` để hiểu chi tiết
 - `B4` chứa bài tập tuần 4 (bảng ký hiệu / symbol table) — xem `B4/README.md` để hiểu chi tiết
+- `B5` — scanner, parser và symbol table (tuần 5) — xem `B5/README.md` để hiểu chi tiết
 
 ## Cách biên dịch và chạy (Windows PowerShell)
 
@@ -72,6 +73,15 @@ make
 .\run_tests.ps1
 # Hoặc chạy scanner trực tiếp
 .\scanner.exe
+```
+
+### B5 (scanner + parser + symbol table)
+
+```powershell
+cd .\B5
+make
+# Hoặc biên dịch bằng GCC: gcc *.c -o main.exe
+.\main.exe tests\example1.kpl
 ```
 
 Nếu bạn dùng Microsoft Visual C (cl.exe), hãy mở Developer Command Prompt hoặc thiết lập môi trường MSVC trước.
