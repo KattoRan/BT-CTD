@@ -52,6 +52,7 @@ B2/
 - `B3` chứa bài tập tuần 3 (parser) — xem `B3/README.md` để hiểu chi tiết
 - `B4` chứa bài tập tuần 4 (bảng ký hiệu / symbol table) — xem `B4/README.md` để hiểu chi tiết
 - `B5` — scanner, parser và symbol table (tuần 5) — xem `B5/README.md` để hiểu chi tiết
+- `B6` chứa bài tập tuần 6 (semantic analysis) — xem `B6/README.md` để hiểu chi tiết
 
 ## Cách biên dịch và chạy (Windows PowerShell)
 
@@ -81,6 +82,17 @@ make
 cd .\B5
 make
 # Hoặc biên dịch bằng GCC: gcc *.c -o main.exe
+.\main.exe tests\example1.kpl
+```
+
+### B6 (semantic analysis)
+
+```powershell
+cd .\B6
+make
+# Chạy script test
+.\run_tests.ps1
+# Hoặc chạy trực tiếp
 .\main.exe tests\example1.kpl
 ```
 
