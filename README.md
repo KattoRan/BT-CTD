@@ -85,6 +85,17 @@ make
 .\main.exe tests\example1.kpl
 ```
 
+### B6 (semantic analysis)
+
+```powershell
+cd .\B6
+make
+# Chạy script test
+.\run_tests.ps1
+# Hoặc chạy trực tiếp
+.\main.exe tests\example1.kpl
+```
+
 Nếu bạn dùng Microsoft Visual C (cl.exe), hãy mở Developer Command Prompt hoặc thiết lập môi trường MSVC trước.
 
 ## Gợi ý tổ chức nội dung bài tập
