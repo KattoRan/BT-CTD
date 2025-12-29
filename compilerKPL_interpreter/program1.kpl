@@ -1,0 +1,26 @@
+program program1;
+
+var
+  a: integer;
+  b: integer;
+  s: integer;
+  d: integer;
+  p: integer;
+
+begin
+  a := readI;
+  b := readI;
+
+  s := a + b;
+  d := a - b;
+  p := a * b;
+
+  call writeI(s);
+  call writeLn;
+
+  call writeI(d);
+  call writeLn;
+
+  call writeI(p);
+  call writeLn
+end.
