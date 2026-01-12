@@ -1,0 +1,17 @@
+PROGRAM power;
+VAR n : INTEGER;
+    x : INTEGER;
+    y : INTEGER;
+    p : INTEGER;
+BEGIN
+    n := READI;
+    x := 1;
+    REPEAT
+    BEGIN
+       p := x*2;
+       x := p;
+       n := n-1;
+    END;
+    UNTIL n < 1;
+    CALL WRITEI(x); 
+END.

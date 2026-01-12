@@ -1,0 +1,12 @@
+PROGRAM ABS;
+VAR x : INTEGER;
+BEGIN
+  x := READI;
+
+  (* dùng cú pháp mở rộng:
+     <Expression> ::= if <Condition> return <Expression> else return <Expression> *)
+  x := IF x < 0 RETURN -x ELSE RETURN x;
+
+  CALL WRITEI(x);
+  CALL WRITELN;
+END.

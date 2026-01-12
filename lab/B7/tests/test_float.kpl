@@ -1,0 +1,5 @@
+Program TestFloat;
+  Var v1 : Float;
+  Begin
+    v1 := 3.14;
+  End.

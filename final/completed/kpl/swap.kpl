@@ -1,0 +1,18 @@
+PROGRAM Swap;
+VAR a : INTEGER;
+    b : INTEGER;
+
+PROCEDURE swapAB(var a : INTEGER; var b : INTEGER);
+VAR t : INTEGER;
+BEGIN
+  a,b := b,a;
+END;
+
+BEGIN
+  a := READI;
+  b := 16;
+  CALL swapAB(a, b);
+  CALL WRITEI(a);
+  CALL WRITELN;
+  CALL WRITEI(b);
+END.

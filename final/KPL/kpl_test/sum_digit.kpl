@@ -1,0 +1,26 @@
+program program2;
+
+var
+  n: integer;
+  sum: integer;
+  digit: integer;
+
+begin
+  n := readI;
+
+  (* nếu n âm thì đổi sang dương *)
+  if n < 0 then
+    n := 0 - n;
+
+  sum := 0;
+
+  while n != 0 do
+  begin
+    digit := n - (n / 10) * 10;
+    sum := sum + digit;
+    n := n / 10
+  end;
+
+  call writeI(sum);
+  call writeLn
+end.

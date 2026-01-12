@@ -1,0 +1,24 @@
+PROGRAM PrintArray;
+VAR n  : INTEGER;
+    n1 : INTEGER;
+    n2 : INTEGER;
+BEGIN
+  n := READI;
+
+  WHILE n != 1 DO
+  BEGIN
+    CALL WRITEI(n);
+    CALL WRITELN;
+    n1 := n / 2;
+    IF n = n1 * 2 THEN
+    BEGIN
+      n := n1;
+    END
+    ELSE
+    BEGIN
+      n2 := n * 3 + 1;
+      n := n2;
+    END
+  END;
+  if n = 1 then CALL WRITEI(n);
+END.

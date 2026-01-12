@@ -1,0 +1,16 @@
+PROGRAM test;
+VAR s : STRING;
+    b : BYTES;
+    x : INTEGER;
+    y : INTEGER;
+BEGIN
+    s := "Hello World"; // Comment kieu C++
+    x := 2 ** 10;
+    y := 10 % 3;
+    REPEAT
+       x := x + 1;
+    UNTIL x > 10;
+    CALL WRITEI(x);
+    CALL WRITELN;
+    CALL WRITEI(y);   
+END.
